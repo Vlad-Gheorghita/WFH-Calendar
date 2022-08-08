@@ -4,6 +4,10 @@ import { FirebaseModule } from 'src/shared/firebase/firebase.module';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+//Flex-Layout
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -14,6 +18,7 @@ import { AppComponent } from './app.component';
     BrowserModule,
     AppRoutingModule,
     FirebaseModule,
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

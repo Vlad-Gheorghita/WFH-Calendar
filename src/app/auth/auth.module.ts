@@ -4,6 +4,18 @@ import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { FormsModule } from '@angular/forms';
+
+//Material Layout
+import { MatCardModule } from '@angular/material/card';
+//Material Form Control
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+// Material Buttons & Indicators
+import { MatButtonModule } from '@angular/material/button';
+
+//Flex-Layout
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 
 @NgModule({
@@ -13,7 +25,13 @@ import { RegisterComponent } from './register/register.component';
   ],
   imports: [
     CommonModule,
-    AuthRoutingModule
+    AuthRoutingModule,
+    FormsModule,
+    FlexLayoutModule,
+    MatCardModule,
+    MatInputModule,
+    MatButtonModule,
+    MatFormFieldModule,
   ]
 })
 export class AuthModule { }
