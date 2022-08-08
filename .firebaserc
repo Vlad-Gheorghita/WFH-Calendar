@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "wfh-calendar-be679": {
+      "hosting": {
+        "WFH-Calendar": [
+          "wfh-calendar"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "wfh-calendar-be679"
+  }
+}
