@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from 'src/app/libs/auth/auth.service';
 import { User } from 'src/app/libs/models/user';
 import { UserServiceService } from 'src/app/libs/services/user-service.service';
 
@@ -7,16 +9,19 @@ import { UserServiceService } from 'src/app/libs/services/user-service.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent implements OnInit {
+export class RegisterComponent{
 
-  user: User = new User();
+  constructor(private authService: AuthService, private router: Router) { }
 
-  constructor(private userService: UserServiceService) { }
-
-  ngOnInit(): void {
+  continueWithGoogle() {
+    this.authService.GoogleAuth();
   }
 
-  register(){
-    this.userService.createUser(Object.assign({},this.user));
+  register(email: string, password: string){
+    this.authService.SignUp(email,password);
+  }
+
+  redirectToLogin(){
+    this.router.navigate(['auth/login'])
   }
 }

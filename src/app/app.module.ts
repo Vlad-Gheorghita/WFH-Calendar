@@ -6,9 +6,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
-//Flex-Layout
-import { FlexLayoutModule } from '@angular/flex-layout';
-
+//Toastr
+import { ToastrModule } from 'ngx-toastr';
 
 @NgModule({
   declarations: [
@@ -18,7 +17,10 @@ import { FlexLayoutModule } from '@angular/flex-layout';
     BrowserModule,
     AppRoutingModule,
     FirebaseModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-left"
+    }),
   ],
   providers: [],
   bootstrap: [AppComponent]
