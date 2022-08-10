@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { faBuildingCircleArrowRight, faHouseUser } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-nav',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NavComponent implements OnInit {
 
+  faOffice: any;
+  faHome: any;
+
   constructor() { }
 
   ngOnInit(): void {
+    this.faOffice = faBuildingCircleArrowRight;
+    this.faHome = faHouseUser
   }
 
 }

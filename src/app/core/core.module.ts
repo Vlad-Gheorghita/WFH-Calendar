@@ -10,6 +10,10 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Material Buttons & Indicators
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
+import { SharedModule } from 'src/shared/shared.module';
+
+//Font Awesome
+import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 
 @NgModule({
   declarations: [
@@ -21,7 +25,8 @@ import { MatButtonModule } from '@angular/material/button';
     CoreRoutingModule,
     MatToolbarModule,
     MatIconModule,
-    MatButtonModule
+    MatButtonModule,
+    FontAwesomeModule,
   ]
 })
 export class CoreModule { }
