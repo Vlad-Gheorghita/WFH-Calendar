@@ -5,12 +5,11 @@ import { Component, Input, OnInit } from '@angular/core';
   templateUrl: './day-card.component.html',
   styleUrls: ['./day-card.component.scss']
 })
-export class DayCardComponent implements OnInit {
-  @Input() currentDay: number = 1;
+export class DayCardComponent {
+  @Input() day: any;
 
-  constructor() { }
-
-  ngOnInit(): void {
+  checkIfToday(): boolean {
+    const currentDate = new Date();
+    return (this.day === currentDate.getDate()) ? true : false;
   }
-
 }

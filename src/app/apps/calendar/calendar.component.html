@@ -3,6 +3,6 @@
         currentDate.getFullYear()}}</mat-card-title>
     <mat-card-content style="height: 85%; margin-top: 2%;">
         <app-day-card *ngFor="let dayNumber of getArrayOfDaysInMonth(getNumberOfDaysInMonth(currentDate.getMonth()))"
-            [currentDay]="dayNumber"></app-day-card>
+            [day]="dayNumber"></app-day-card>
     </mat-card-content>
 </mat-card>
