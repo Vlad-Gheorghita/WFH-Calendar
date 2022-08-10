@@ -3,9 +3,7 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
 import * as auth from 'firebase/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
 import { User } from '../models/user';
-import { stringToKeyValue } from '@angular/flex-layout/extended/typings/style/style-transforms';
 import { ToastrService } from 'ngx-toastr';
 
 
@@ -14,7 +12,6 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AuthService {
 
-  // $currentUser: BehaviorSubject<User> = new BehaviorSubject<User>(new User());
 
   userData: any; // Save logged in user data
 
