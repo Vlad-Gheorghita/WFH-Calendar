@@ -6,19 +6,30 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent implements OnInit {
+export class CalendarComponent {
 
   currentDate: Date = new Date();
   monthNameList: string[] = ["January", "February", "March", "April", "May", "June",
-    "July", "August", "September", "October", "November", "December"]
+    "July", "August", "September", "October", "November", "December"];
 
-  constructor() { }
-
-  ngOnInit(): void {
+  getMonthName(monthNumber: number) {
+    return this.monthNameList[monthNumber];
   }
 
-  getMonthName(monthNumber: number){
-    return this.monthNameList[monthNumber];
+  getNumberOfDaysInMonth(monthNumber: number): number {
+    monthNumber++;
+    if (monthNumber === 2) {
+      return (this.checkLeapYear(this.currentDate.getFullYear())) ? 29 : 28;
+    }
+    return (monthNumber <= 7 && monthNumber % 2 !== 0) || (monthNumber >= 8 && monthNumber % 2 === 0) ? 31 : 30;
+  }
+
+  getArrayOfDaysInMonth(numberOfDays: number): number[] {
+    return Array.from({ length: numberOfDays }, (_, i) => i + 1);
+  }
+
+  private checkLeapYear(year: number): boolean {
+    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
   }
 
 }

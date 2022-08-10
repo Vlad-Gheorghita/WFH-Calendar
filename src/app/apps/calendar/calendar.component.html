@@ -1,4 +1,8 @@
 <mat-card style="margin: 2% 2% 2% 2%; height: 85%; width: auto">
     <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{getMonthName(currentDate.getMonth()) + " " +
         currentDate.getFullYear()}}</mat-card-title>
+    <mat-card-content style="height: 85%; margin-top: 2%;">
+        <app-day-card *ngFor="let dayNumber of getArrayOfDaysInMonth(getNumberOfDaysInMonth(currentDate.getMonth()))"
+            [currentDay]="dayNumber"></app-day-card>
+    </mat-card-content>
 </mat-card>
