@@ -9,6 +9,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //Toastr
 import { ToastrModule } from 'ngx-toastr';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { AuthGuard } from './libs/guards/auth.guard';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,7 @@ import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
     }),
     FontAwesomeModule,
   ],
-  providers: [],
+  providers: [AuthGuard],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

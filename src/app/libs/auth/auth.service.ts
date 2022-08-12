@@ -30,7 +30,7 @@ export class AuthService {
         localStorage.setItem('user', JSON.stringify(this.userData));
         JSON.parse(localStorage.getItem('user')!);
       } else {
-        localStorage.setItem('user', 'null');
+        localStorage.setItem('user', '{}');
         JSON.parse(localStorage.getItem('user')!);
       }
     });
@@ -41,6 +41,7 @@ export class AuthService {
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
+          localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
         });
         this.SetUserData(result.user);
@@ -58,6 +59,7 @@ export class AuthService {
         /* Call the SendVerificaitonMail() function when new user sign 
         up and returns promise */
         // this.SendVerificationMail();
+        localStorage.setItem('user', JSON.stringify(result.user));
         this.router.navigate(['app']);
         this.SetUserData(result.user);
       })
@@ -133,7 +135,7 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.removeItem('user');
+      localStorage.setItem('user','{}');
       this.router.navigate(['auth/login']);
     });
   }
