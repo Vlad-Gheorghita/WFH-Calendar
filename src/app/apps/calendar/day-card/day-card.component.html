@@ -1,4 +1,7 @@
-<mat-card class="in-line" style="height: 20%; width: 8%; margin: 0.2% 0.2% 0.2% 0.2%">
-    <mat-card-title *ngIf="checkIfToday()" class="content-color" fxLayout="row" fxLayoutAlign="end center">{{day}}</mat-card-title>
-    <mat-card-title *ngIf="!checkIfToday()" class="grayed-out-color" fxLayout="row" fxLayoutAlign="end center">{{day}}</mat-card-title>
+<mat-card style="height: 85px;">
+    <mat-card-title *ngIf="checkIfToday()" class="content-color" fxLayout="row" fxLayoutAlign="end center">{{day}}
+    </mat-card-title>
+    <mat-card-title *ngIf="!checkIfToday()" class="grayed-out-color" fxLayout="row" fxLayoutAlign="end center">{{day}}
+    </mat-card-title>
+    <mat-card-content></mat-card-content>
 </mat-card>

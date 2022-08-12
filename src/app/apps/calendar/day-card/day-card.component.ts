@@ -7,6 +7,7 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class DayCardComponent {
   @Input() day: any;
+  @Input() month: any;
 
   checkIfToday(): boolean {
     const currentDate = new Date();
