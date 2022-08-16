@@ -7,6 +7,10 @@ import { Wfh } from '../models/wfh';
   providedIn: 'root'
 })
 export class WfhService {
+  monthNameList: string[] = ["January", "February", "March", "April", "May", "June",
+  "July", "August", "September", "October", "November", "December"];
+  dayNameList: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+  numberOfWorkingDaysInCurrentMonth: number = 21;
 
   constructor(private afs: AngularFirestore) { }
 
@@ -37,4 +41,5 @@ export class WfhService {
   updateWfh(workedMonth: Wfh) {
       return this.afs.doc(`workedMonths/${workedMonth.uid}`).update({daysWFH: workedMonth.daysWFH});
   }
+  
 }

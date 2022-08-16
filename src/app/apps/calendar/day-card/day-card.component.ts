@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faBriefcase } from '@fortawesome/free-solid-svg-icons';
 import { Wfh } from 'src/app/libs/models/wfh';
@@ -14,14 +15,13 @@ export class DayCardComponent implements OnInit {
   @Input() isOfficeDay!: boolean;
   @Input() date: Date;
 
-  monthNameList: string[] = ["January", "February", "March", "April", "May", "June",
-  "July", "August", "September", "October", "November", "December"];
-  dayNameList: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
+
+  
   officeDay: IconDefinition = faBriefcase;
   
   workedMonth: Wfh = new Wfh();
 
-  constructor(private wfhService: WfhService) { 
+  constructor(private wfhService: WfhService, private router: Router) { 
     this.date = new Date();
   }
   ngOnInit(): void {
@@ -34,22 +34,19 @@ export class DayCardComponent implements OnInit {
   }
 
   toggleOfficeDayToWorkedMonth() {
-
     this.workedMonth.daysWFH.includes(this.day) ? 
     this.workedMonth.daysWFH.splice(this.workedMonth.daysWFH.indexOf(this.day),1) :
     this.workedMonth.daysWFH.push(this.day);
 
     this.workedMonth.daysWFH.sort();
-
     this.isOfficeDay = true;
-
     this.wfhService.updateWfh(this.workedMonth);
   }
 
   private getWfhForCurrentUser() {
     const userId = JSON.parse(localStorage.getItem('user')!).uid;
 
-    this.wfhService.getWfhByUserId(userId, this.monthNameList[this.date.getMonth()])
+    this.wfhService.getWfhByUserId(userId, this.wfhService.monthNameList[this.date.getMonth()])
       .subscribe(r => this.workedMonth = r[0]);
   }
   
