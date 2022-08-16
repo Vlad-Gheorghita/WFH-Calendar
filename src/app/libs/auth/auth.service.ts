@@ -142,7 +142,7 @@ export class AuthService {
     });
   }
 
-  private getUser(userId: string) {
-    return this.afs.collection<User>('users', q=> q.where('uid', '==', userId)).valueChanges();
+  getUser(userId: string) {
+    return this.afs.collection<User>('users', q => q.where('uid', '==', userId)).valueChanges();
   }
 }

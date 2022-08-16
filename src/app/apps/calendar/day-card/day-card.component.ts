@@ -52,4 +52,5 @@ export class DayCardComponent implements OnInit {
     this.wfhService.getWfhByUserId(userId, this.monthNameList[this.date.getMonth()])
       .subscribe(r => this.workedMonth = r[0]);
   }
+  
 }

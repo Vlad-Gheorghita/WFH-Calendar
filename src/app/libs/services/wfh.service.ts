@@ -10,14 +10,14 @@ export class WfhService {
 
   constructor(private afs: AngularFirestore) { }
 
-  addWfh(userId: string, workedDay: number, workedMonth: string, workedYear: number) {
+  addWfh(userId: string, workedMonth: string, workedYear: number) {
     const docId = this.afs.createId();
     const wfhRef: AngularFirestoreDocument<Wfh> = this.afs.doc(`workedMonths/${docId}`);
 
     const wfhData: Wfh = {
       uid: docId,
       userid: userId,
-      daysWFH: [workedDay],
+      daysWFH: [],
       monthName: workedMonth.toLowerCase(),
       year: workedYear
     }
@@ -29,11 +29,9 @@ export class WfhService {
   }
 
   getWfhByUserId(userId: string, month: string) {
-    var tst = this.afs.collection<Wfh>(
+    return this.afs.collection<Wfh>(
       'workedMonths', q => q.where('userid', '==', userId).where('monthName', '==', month.toLowerCase()))
       .valueChanges();
-
-    return tst;
   }
 
   updateWfh(workedMonth: Wfh) {

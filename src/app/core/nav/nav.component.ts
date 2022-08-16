@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { IconProp } from '@fortawesome/fontawesome-svg-core';
 import { faArrowRightFromBracket, faBuildingCircleArrowRight, faHouseUser} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/libs/auth/auth.service';
+import { User } from 'src/app/libs/models/user';
 
 @Component({
   selector: 'app-nav',
@@ -10,6 +10,7 @@ import { AuthService } from 'src/app/libs/auth/auth.service';
 })
 export class NavComponent implements OnInit {
   iconList: Map<string, any> = new Map();
+  user: User = new User();
 
   constructor(private authService: AuthService) { }
 
@@ -18,11 +19,17 @@ export class NavComponent implements OnInit {
     this.iconList.set("office", faBuildingCircleArrowRight);
     this.iconList.set("home", faHouseUser);
 
-    var tst = this.iconList.get("office")
+    this.getCurrentUser();
   }
 
   logOut(){
     this.authService.SignOut();
+  }
+
+  getCurrentUser(){
+    const userId = JSON.parse(localStorage.getItem('user')!).uid;
+
+    this.authService.getUser(userId).subscribe(r => this.user = r[0]);
   }
 
 }

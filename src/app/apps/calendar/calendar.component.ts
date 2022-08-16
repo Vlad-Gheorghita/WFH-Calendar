@@ -17,7 +17,7 @@ export class CalendarComponent implements OnInit {
   currentDate: Date = new Date();
   userId: string = '';
 
-  constructor(private wfhService: WfhService) {}
+  constructor(private wfhService: WfhService) { }
 
   ngOnInit(): void {
     this.userId = JSON.parse(localStorage.getItem('user')!).uid;
@@ -48,14 +48,17 @@ export class CalendarComponent implements OnInit {
     return result;
   }
 
-  getWfh(){
+  getWfh() {
     this.wfhService.getWfhByUserId(this.userId, this.monthNameList[this.currentDate.getMonth()])
       .subscribe(r => {
         r.length === 0 ? this.currentMonthWfh.daysWFH.push(32) : this.currentMonthWfh = r[0];
+        if (this.currentMonthWfh.daysWFH.includes(32)) {
+          this.createWfh();
+        }
       })
   }
 
-  createDateWithDayNumber(day: number): Date{
+  createDateWithDayNumber(day: number): Date {
     return new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
   }
 
@@ -74,5 +77,8 @@ export class CalendarComponent implements OnInit {
     return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
   }
 
+  private createWfh() {
+    this.wfhService.addWfh(this.userId, this.monthNameList[this.currentDate.getMonth()], this.currentDate.getFullYear());
+  }
 
 }
