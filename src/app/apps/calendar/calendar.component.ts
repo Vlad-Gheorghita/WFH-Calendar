@@ -1,21 +1,33 @@
-import { ListKeyManager } from '@angular/cdk/a11y';
+
 import { Component, OnInit } from '@angular/core';
+import { AuthService } from 'src/app/libs/auth/auth.service';
+import { Wfh } from 'src/app/libs/models/wfh';
+import { WfhService } from 'src/app/libs/services/wfh.service';
 
 @Component({
   selector: 'app-calendar',
   templateUrl: './calendar.component.html',
   styleUrls: ['./calendar.component.scss']
 })
-export class CalendarComponent {
-
-  currentDate: Date = new Date();
+export class CalendarComponent implements OnInit {
   monthNameList: string[] = ["January", "February", "March", "April", "May", "June",
     "July", "August", "September", "October", "November", "December"];
   dayNameList: string[] = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'];
 
-  //De scos parametrul si adaugat currentDate.getMonth()
-  getMonthName(monthNumber: number) {
-    return this.monthNameList[monthNumber];
+  currentMonthWfh: Wfh = new Wfh();
+  currentDate: Date = new Date();
+  userId: string = '';
+
+  constructor(private wfhService: WfhService) {
+  }
+
+  ngOnInit(): void {
+    this.userId = JSON.parse(localStorage.getItem('user')!).uid;
+    this.getWfh();
+  }
+
+  getMonthName() {
+    return this.monthNameList[this.currentDate.getMonth()];
   }
 
   getArrayOfDaysWithSameName(dayName: string): number[] {
@@ -36,6 +48,13 @@ export class CalendarComponent {
     })
 
     return result;
+  }
+
+  getWfh(){
+    this.wfhService.getWfhByUserId(this.userId, 'august')
+      .subscribe(r => {
+        r.length === 0 ? this.currentMonthWfh.daysWFH.push(32) : this.currentMonthWfh = r[0];
+      })
   }
 
   private getArrayOfDaysInMonth(): number[] {

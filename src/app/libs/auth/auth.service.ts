@@ -5,14 +5,13 @@ import * as auth from 'firebase/auth';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { ToastrService } from 'ngx-toastr';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthService {
-
-
   userData: any; // Save logged in user data
 
   constructor(
@@ -23,7 +22,7 @@ export class AuthService {
     private toastr: ToastrService
   ) {
     /* Saving user data in localstorage when 
-    logged in and setting up null when logged out */
+    logged in and setting up {} when logged out */
     this.afAuth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
@@ -35,6 +34,7 @@ export class AuthService {
       }
     });
   }
+
   // Sign in with email/password
   SignIn(email: string, password: string) {
     return this.afAuth
@@ -43,8 +43,9 @@ export class AuthService {
         this.ngZone.run(() => {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
+          console.log(result.user?.displayName)
         });
-        this.SetUserData(result.user);
+        // this.SetUserData(result.user);
       })
       .catch((error) => {
         // window.alert(error.message);
@@ -93,6 +94,7 @@ export class AuthService {
     const user = JSON.parse(localStorage.getItem('user')!);
     return user !== null && user.emailVerified !== false ? true : false;
   }
+
   // Sign in with Google
   GoogleAuth() {
     return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
@@ -109,7 +111,7 @@ export class AuthService {
         this.ngZone.run(() => {
           this.router.navigate(['app']);
         });
-        this.SetUserData(result.user);
+        // this.SetUserData(result.user);
       })
       .catch((error) => {
         // window.alert(error);
@@ -135,8 +137,12 @@ export class AuthService {
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {
-      localStorage.setItem('user','{}');
+      localStorage.setItem('user', '{}');
       this.router.navigate(['auth/login']);
     });
+  }
+
+  private getUser(userId: string) {
+    return this.afs.collection<User>('users', q=> q.where('uid', '==', userId)).valueChanges();
   }
 }

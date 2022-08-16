@@ -1,62 +1,75 @@
 <mat-card style="margin: 2% 2% 2% 2%; height: 85%; width: auto">
-    <mat-card-title fxLayout="row" fxLayoutAlign="center center">{{getMonthName(currentDate.getMonth()) + " " +
-        currentDate.getFullYear()}}</mat-card-title>
+    <mat-card-title fxLayout="row" fxLayoutAlign="center center">
+        {{getMonthName() + " " + currentDate.getFullYear()}}
+    </mat-card-title>
     <mat-card-content style="height: 85%; margin-top: 2%;">
-        <!-- <app-day-card *ngFor="let dayNumber of getArrayOfDaysInMonth(getNumberOfDaysInMonth(currentDate.getMonth()))"
-            [day]="dayNumber"></app-day-card> -->
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Monday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name" class="day-name">Monday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%;">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Monday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber" [month]="currentDate.getMonth()"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Monday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Tuesday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Tuesday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Tuesday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Tuesday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Wednesday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Wednesday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Wednesday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Wednesday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Thursday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Thursday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Thursday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Thursday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Friday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Friday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Friday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Friday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Saturday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Saturday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Saturday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Saturday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
-        <div fxLayout="column" fxLayoutAlign="center center" style="width: 13.28%; float:right; margin-left: 0.5%; margin-right: 0.5%;">
-            <span>Sunday</span>
+        <div fxLayout="column" fxLayoutAlign="center center"
+            style="width: 13.28%; float:right; margin-left: 0.5%; margin-right: 0.5%;">
+            <span class="day-name">Sunday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
-                <div *ngFor="let dayNumber of getArrayOfDaysWithSameName('Sunday')" style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card  [day]="dayNumber"></app-day-card>
+                <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Sunday')"
+                    style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
+                    <app-day-card [day]="dayNumber" [isOfficeDay]="currentMonthWfh.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
