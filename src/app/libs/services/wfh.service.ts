@@ -36,25 +36,7 @@ export class WfhService {
     return tst;
   }
 
-  // updateWfh(uid: string, userId: string, workedDay: number, workedMonth: string, workedYear: number) {
-  //   var wfh = this.getWfhByUserId(userId, workedMonth);
-  //   if (wfh === undefined)
-  //     return this.addWfh(userId, workedDay, workedMonth, workedYear);
-
-  //   wfh.daysWFH.push(workedDay);
-  //   return this.afs.doc(`workedMonths/${uid}`).update({ daysWFH: wfh.daysWFH })
-
-  // }
-
-  // private mapToWfh(document: any): Wfh {
-  //   const wfh: Wfh = {
-  //     uid: document.uid,
-  //     userid: document.userid,
-  //     daysWFH: document.daysWFH,
-  //     monthName: document.monthName,
-  //     year: document.year
-  //   }
-
-  //   return wfh;
-  // }
+  updateWfh(workedMonth: Wfh) {
+      return this.afs.doc(`workedMonths/${workedMonth.uid}`).update({daysWFH: workedMonth.daysWFH});
+  }
 }

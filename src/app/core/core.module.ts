@@ -10,7 +10,6 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 // Material Buttons & Indicators
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
-import { SharedModule } from 'src/shared/shared.module';
 
 //Font Awesome
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';

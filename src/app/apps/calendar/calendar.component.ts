@@ -1,6 +1,5 @@
 
 import { Component, OnInit } from '@angular/core';
-import { AuthService } from 'src/app/libs/auth/auth.service';
 import { Wfh } from 'src/app/libs/models/wfh';
 import { WfhService } from 'src/app/libs/services/wfh.service';
 
@@ -18,8 +17,7 @@ export class CalendarComponent implements OnInit {
   currentDate: Date = new Date();
   userId: string = '';
 
-  constructor(private wfhService: WfhService) {
-  }
+  constructor(private wfhService: WfhService) {}
 
   ngOnInit(): void {
     this.userId = JSON.parse(localStorage.getItem('user')!).uid;
@@ -51,10 +49,14 @@ export class CalendarComponent implements OnInit {
   }
 
   getWfh(){
-    this.wfhService.getWfhByUserId(this.userId, 'august')
+    this.wfhService.getWfhByUserId(this.userId, this.monthNameList[this.currentDate.getMonth()])
       .subscribe(r => {
         r.length === 0 ? this.currentMonthWfh.daysWFH.push(32) : this.currentMonthWfh = r[0];
       })
+  }
+
+  createDateWithDayNumber(day: number): Date{
+    return new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
   }
 
   private getArrayOfDaysInMonth(): number[] {

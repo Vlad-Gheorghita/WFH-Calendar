@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { IconProp } from '@fortawesome/fontawesome-svg-core';
-import { faArrowRightFromBracket, faBuildingCircleArrowRight, faHouseUser, IconDefinition } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBuildingCircleArrowRight, faHouseUser} from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/libs/auth/auth.service';
 
 @Component({
