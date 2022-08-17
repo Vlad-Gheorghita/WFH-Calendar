@@ -1,6 +1,7 @@
 
 import { Component, Input, OnInit } from '@angular/core';
 import { Wfh } from 'src/app/libs/models/wfh';
+import { CalendarService } from 'src/app/libs/services/calendar.service';
 import { WfhService } from 'src/app/libs/services/wfh.service';
 
 @Component({
@@ -9,63 +10,55 @@ import { WfhService } from 'src/app/libs/services/wfh.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  currentMonthWfh: Wfh = new Wfh();
-  currentDate: Date = new Date();
-  userId: string = '';
+  workedMonth: Wfh = new Wfh();
+  currentDate: Date;
 
-  constructor(private wfhService: WfhService) { }
-
+  constructor(private wfhService: WfhService, private calendarService: CalendarService) {
+    this.currentDate = calendarService.date;
+  }
   ngOnInit(): void {
-    this.userId = JSON.parse(localStorage.getItem('user')!).uid;
     this.getWfh();
   }
 
+
   getMonthName() {
-    return this.wfhService.monthNameList[this.currentDate.getMonth()];
+    return this.calendarService.monthNameList[this.currentDate.getMonth()];
   }
 
   getArrayOfDaysWithSameName(dayName: string): number[] {
-    let result: number[] = [];
-    let date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
+    var result: number[] = [];
+    var date = new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), 1);
     const numberOfDaysInCurrentMonth = this.getArrayOfDaysInMonth();
 
 
-    if (date.getDay() > this.wfhService.dayNameList.indexOf(dayName) && dayName !== 'Sunday') {
-      result.push(this.wfhService.getNumberOfDaysInMonth(date.getMonth() - 1) - (date.getDay() - this.wfhService.dayNameList.indexOf(dayName)) + 1);
+    if (date.getDay() > this.calendarService.dayNameList.indexOf(dayName) && dayName !== 'Sunday') {
+      result.push(this.calendarService.getNumberOfDaysInMonth(date.getMonth() - 1) - (date.getDay() - this.calendarService.dayNameList.indexOf(dayName)) + 1);
     }
 
     numberOfDaysInCurrentMonth.forEach(day => {
       date.setDate(day);
 
-      if (this.wfhService.dayNameList[date.getDay()] === dayName)
+      if (this.calendarService.dayNameList[date.getDay()] === dayName)
         result.push(day);
     })
-    
-    return result;
-  }
 
-  getWfh() {
-    this.wfhService.getWfhByUserId(this.userId, this.wfhService.monthNameList[this.currentDate.getMonth()])
-      .subscribe(r => {
-        r.length === 0 ? this.currentMonthWfh.daysWFH.push(32) : this.currentMonthWfh = r[0];
-        if (this.currentMonthWfh.daysWFH.includes(32)) {
-          this.createWfh();
-        }
-      })
+    return result;
   }
 
   createDateWithDayNumber(day: number): Date {
     return new Date(this.currentDate.getFullYear(), this.currentDate.getMonth(), day);
   }
-  
+
+  getWfh() {
+    this.wfhService.getWfhByUserId(this.wfhService.userId, this.calendarService.monthNameList[this.currentDate.getMonth()])
+      .subscribe(result => {
+        const mappedResult = result.docs.map(doc => doc.data());
+
+        mappedResult.length === 0 ? this.wfhService.createWfh() : this.workedMonth = mappedResult[0];
+      })
+  }
 
   private getArrayOfDaysInMonth(): number[] {
-    return Array.from({ length: this.wfhService.getNumberOfDaysInMonth(this.currentDate.getMonth()) }, (_, i) => i + 1);
+    return Array.from({ length: this.calendarService.getNumberOfDaysInMonth(this.currentDate.getMonth()) }, (_, i) => i + 1);
   }
-
-
-  private createWfh() {
-    this.wfhService.addWfh(this.userId, this.wfhService.monthNameList[this.currentDate.getMonth()], this.currentDate.getFullYear());
-  }
-
 }
