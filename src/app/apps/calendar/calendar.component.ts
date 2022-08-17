@@ -9,8 +9,6 @@ import { WfhService } from 'src/app/libs/services/wfh.service';
   styleUrls: ['./calendar.component.scss']
 })
 export class CalendarComponent implements OnInit {
-  private numberOfWorkingDays: number = 21;
-
   currentMonthWfh: Wfh = new Wfh();
   currentDate: Date = new Date();
   userId: string = '';
@@ -33,7 +31,7 @@ export class CalendarComponent implements OnInit {
 
 
     if (date.getDay() > this.wfhService.dayNameList.indexOf(dayName) && dayName !== 'Sunday') {
-      result.push(this.getNumberOfDaysInMonth(date.getMonth() - 1) - (date.getDay() - this.wfhService.dayNameList.indexOf(dayName)) + 1);
+      result.push(this.wfhService.getNumberOfDaysInMonth(date.getMonth() - 1) - (date.getDay() - this.wfhService.dayNameList.indexOf(dayName)) + 1);
     }
 
     numberOfDaysInCurrentMonth.forEach(day => {
@@ -43,8 +41,6 @@ export class CalendarComponent implements OnInit {
         result.push(day);
     })
     
-    dayName.toLowerCase() !== 'saturday' && dayName.toLowerCase() !== 'sunday' ? this.numberOfWorkingDays += result.length : this.numberOfWorkingDays += 0;
-    this.wfhService.numberOfWorkingDaysInCurrentMonth = this.numberOfWorkingDays;
     return result;
   }
 
@@ -64,19 +60,9 @@ export class CalendarComponent implements OnInit {
   
 
   private getArrayOfDaysInMonth(): number[] {
-    return Array.from({ length: this.getNumberOfDaysInMonth(this.currentDate.getMonth()) }, (_, i) => i + 1);
+    return Array.from({ length: this.wfhService.getNumberOfDaysInMonth(this.currentDate.getMonth()) }, (_, i) => i + 1);
   }
 
-  private getNumberOfDaysInMonth(monthNumber: number): number {
-    monthNumber++;
-    if (monthNumber === 2) {
-      return (this.checkLeapYear(this.currentDate.getFullYear())) ? 29 : 28;
-    }
-    return (monthNumber <= 7 && monthNumber % 2 !== 0) || (monthNumber >= 8 && monthNumber % 2 === 0) ? 31 : 30;
-  }
-  private checkLeapYear(year: number): boolean {
-    return ((year % 4 == 0) && (year % 100 != 0)) || (year % 400 == 0);
-  }
 
   private createWfh() {
     this.wfhService.addWfh(this.userId, this.wfhService.monthNameList[this.currentDate.getMonth()], this.currentDate.getFullYear());

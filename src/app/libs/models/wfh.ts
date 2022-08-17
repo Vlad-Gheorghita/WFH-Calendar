@@ -4,4 +4,5 @@ export class Wfh {
     daysWFH: number[] = [];
     monthName: string = '';
     year?: number;
+    workingDays: number = 0;
 }

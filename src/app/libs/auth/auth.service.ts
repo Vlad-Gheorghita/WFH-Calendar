@@ -5,7 +5,6 @@ import * as auth from 'firebase/auth';
 import { Router } from '@angular/router';
 import { User } from '../models/user';
 import { ToastrService } from 'ngx-toastr';
-import { BehaviorSubject, Observable } from 'rxjs';
 
 
 @Injectable({
@@ -43,7 +42,6 @@ export class AuthService {
         this.ngZone.run(() => {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
-          console.log(result.user?.displayName)
         });
         // this.SetUserData(result.user);
       })
