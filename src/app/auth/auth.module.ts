@@ -14,12 +14,14 @@ import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
 //Flex-Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
+import { EmailVerificationComponent } from './email-verification/email-verification.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    EmailVerificationComponent
   ],
   imports: [
     CommonModule,
