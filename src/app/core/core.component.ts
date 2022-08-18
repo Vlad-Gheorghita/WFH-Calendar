@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { finalize } from 'rxjs/operators';
 import { Wfh } from '../libs/models/wfh';
 import { CalendarService } from '../libs/services/calendar.service';
+import { LoadingService } from '../libs/services/loading.service';
 import { WfhService } from '../libs/services/wfh.service';
 
 @Component({
@@ -12,27 +14,27 @@ export class CoreComponent implements OnInit {
   workedMonth: Wfh = new Wfh()
   homeDays: any;
 
-  constructor(private calendarService: CalendarService, private wfhService: WfhService) { }
+  constructor(private calendarService: CalendarService, private wfhService: WfhService, public loadingService: LoadingService) { }
 
   ngOnInit(): void {
     this.getWfh();
   }
 
-  private getWfh(){
-    this.wfhService.getWfhByUserId(this.wfhService.userId, this.calendarService.monthNameList[new Date().getMonth()])
+  private getWfh() {
+    this.wfhService.getWfhByUserId(this.wfhService.userId, this.calendarService.monthNameList[new Date().getMonth()]).pipe(finalize(() => {
+      this.loadingService.setLoading(false);
+    }))
       .subscribe(result => {
+        this.loadingService.setLoading(false);
         const mappedResult = result.docs.map(doc => doc.data());
-        
-        if (mappedResult.length === 0 )
-        {
+
+        if (mappedResult.length === 0) {
           this.homeDays = this.wfhService.homeDays;
         }
-        else{
-          this.wfhService.homeDays = {daysLeft: 12 - mappedResult[0].daysWFH.length};
+        else {
+          this.wfhService.homeDays = { daysLeft: 12 - mappedResult[0].daysWFH.length };
           this.homeDays = this.wfhService.homeDays;
         }
       })
   }
-
-  
 }
