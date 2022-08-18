@@ -12,6 +12,8 @@ export class WfhService {
   userId: string;
   private workedMonth: BehaviorSubject<Wfh> = new BehaviorSubject(new Wfh());
 
+  homeDays = {daysLeft: 12}
+
   constructor(private afs: AngularFirestore, private calendarService: CalendarService) {
     this.userId = JSON.parse(localStorage.getItem('user')!).uid;
    }
@@ -47,6 +49,7 @@ export class WfhService {
 
   updateWfh(workedMonth: Wfh) {
     this.addToSubject(workedMonth);
+    this.homeDays.daysLeft = 12 - workedMonth.daysWFH.length;
     return this.afs.doc(`workedMonths/${workedMonth.uid}`).update({ daysWFH: workedMonth.daysWFH });
   }
   

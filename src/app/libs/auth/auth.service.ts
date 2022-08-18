@@ -107,9 +107,10 @@ export class AuthService {
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
+          localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
         });
-        // this.SetUserData(result.user);
+        this.SetUserData(result.user);
       })
       .catch((error) => {
         // window.alert(error);

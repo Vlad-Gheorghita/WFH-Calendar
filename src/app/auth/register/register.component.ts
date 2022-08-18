@@ -18,7 +18,7 @@ export class RegisterComponent{
   register(email: string, password: string){
     this.authService.SignUp(email,password);
   }
-
+  
   redirectToLogin(){
     this.router.navigate(['auth/login'])
   }
