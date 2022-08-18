@@ -1,9 +1,8 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="height: 100vh;" class="background">
     <mat-card style="width: 15%;" class="card">
-        <mat-card-title fxLayout="row" fxLayoutAlign="center center">LogIn</mat-card-title>
+        <mat-card-title fxLayout="row" fxLayoutAlign="center center">Log In</mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
-            <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="loginFormGroup"
-                (ngSubmit)="onSubmit()">
+            <form (ngSubmit)="onSubmit()" fxLayout="column" [formGroup]="loginFormGroup">
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput required formControlName="email" type="email" placeholder="example@email.com">
