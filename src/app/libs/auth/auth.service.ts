@@ -80,7 +80,8 @@ export class AuthService {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        window.alert('Password reset email sent, check your inbox.');
+        // window.alert('Password reset email sent, check your inbox.');
+        this.toastr.info('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
         // window.alert(error);

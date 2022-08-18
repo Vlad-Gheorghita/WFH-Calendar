@@ -15,13 +15,15 @@ import { MatButtonModule } from '@angular/material/button';
 //Flex-Layout
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { EmailVerificationComponent } from './email-verification/email-verification.component';
+import { PasswordResetComponent } from './password-reset/password-reset.component';
 
 
 @NgModule({
   declarations: [
     LoginComponent,
     RegisterComponent,
-    EmailVerificationComponent
+    EmailVerificationComponent,
+    PasswordResetComponent
   ],
   imports: [
     CommonModule,

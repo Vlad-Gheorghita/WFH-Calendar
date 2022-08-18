@@ -1,5 +1,5 @@
 <div fxLayout="row" fxLayoutAlign="center center" style="height: 100vh;" class="background">
-    <mat-card style="width: 13%;" class="card">
+    <mat-card style="width: 15%;" class="card">
         <mat-card-title fxLayout="row" fxLayoutAlign="center center">LogIn</mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
             <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="loginFormGroup"
@@ -28,7 +28,11 @@
             </button>
             <div style="margin-top: 2%;">
                 <span>Don't have an account?<button mat-flat-button style="background-color: #FFB703;"
-                        (click)="redirectToRegister()">Register</button></span>
+                        (click)="redirectToRegister()">Register </button></span>
+            </div>
+            <div style="margin-top: 2%;">
+                <span>Forgot Password?<button mat-flat-button style="background-color: #FFB703;"
+                        (click)="redirectToPasswordReset()">Reset Password</button></span>
             </div>
         </mat-card-footer>
     </mat-card>

@@ -35,6 +35,10 @@ export class LoginComponent {
     this.router.navigate(['auth/register'])
   }
 
+  redirectToPasswordReset(){
+    this.router.navigate(['auth/password-reset'])
+  }
+
   getEmailErrorMessage(): string {
     if (this.loginFormGroup.controls['email'].hasError('required'))
       return 'You must enter a value';
