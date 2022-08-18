@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { faArrowRightFromBracket, faBuildingCircleArrowRight, faHouseUser } from '@fortawesome/free-solid-svg-icons';
+import { faArrowRightFromBracket, faBuildingCircleArrowRight, faEllipsisVertical, faGears, faHouseUser } from '@fortawesome/free-solid-svg-icons';
 import { AuthService } from 'src/app/libs/auth/auth.service';
 import { User } from 'src/app/libs/models/user';
 import { Wfh } from 'src/app/libs/models/wfh';
@@ -26,6 +26,8 @@ export class NavComponent implements OnInit {
     this.iconList.set("logout", faArrowRightFromBracket);
     this.iconList.set("office", faBuildingCircleArrowRight);
     this.iconList.set("home", faHouseUser);
+    this.iconList.set("menu", faEllipsisVertical);
+    this.iconList.set("settings", faGears)
 
     this.officeDays = this.calendarService.workingDays - 12;
     this.getCurrentUser();

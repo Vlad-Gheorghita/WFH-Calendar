@@ -8,7 +8,20 @@
     <div style="margin-left: 0.1%; margin-right: 0.7%">{{officeDays}}</div>
     <fa-icon [icon]="iconList.get('home')"></fa-icon>
     <div style="margin-left: 0.1%; margin-right: 0.7%">{{homeDays}}</div>
-    <a style="margin-right: 0.7%; cursor: pointer;" title="Sign Out" (click)="logOut()">
+    <button mat-icon-button [matMenuTriggerFor]="menu">
+        <fa-icon [icon]="iconList.get('menu')"></fa-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+        <button mat-menu-item>
+            <fa-icon [icon]="iconList.get('settings')"></fa-icon>
+            <span style="margin-left: 5%;">Settings</span>
+        </button>
+        <button mat-menu-item>
+            <fa-icon [icon]="iconList.get('logout')"></fa-icon>
+            <span style="margin-left: 5%;">Log Out</span>
+        </button>
+    </mat-menu>
+    <!-- <a style="margin-right: 0.7%; cursor: pointer;" title="Sign Out" (click)="logOut()">
         <fa-icon [icon]="iconList.get('logout')"></fa-icon>
-    </a>
+    </a> -->
 </mat-toolbar>
