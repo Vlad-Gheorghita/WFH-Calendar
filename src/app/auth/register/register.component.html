@@ -1,5 +1,5 @@
-<div fxLayout="row" fxLayoutAlign="center center" style="height: 100vh;">
-    <mat-card style="width: 13%;">
+<div fxLayout="row" fxLayoutAlign="center center" style="height: 100vh;" class="background">
+    <mat-card style="width: 13%;" class="card">
         <mat-card-title fxLayout="row" fxLayoutAlign="center center">Register</mat-card-title>
         <mat-card-content fxLayout="column" fxLayoutAlign="space-around center">
             <form fxLayout="column" fxLayoutAlign="space-around center" [formGroup]="registerFormGroup"
@@ -7,26 +7,32 @@
                 <mat-form-field>
                     <mat-label>Email</mat-label>
                     <input matInput required formControlName="email" type="email" placeholder="example@email.com">
-                    <mat-error *ngIf="registerFormGroup.controls['email'].invalid">{{getEmailErrorMessage()}}</mat-error>
+                    <mat-error *ngIf="registerFormGroup.controls['email'].invalid">{{getEmailErrorMessage()}}
+                    </mat-error>
                 </mat-form-field>
                 <mat-form-field hintLabel="Min 6 characters">
                     <mat-label>Password</mat-label>
-                    <input matInput #input required formControlName="pwd" type="password" minlength="6" >
+                    <input matInput #input required formControlName="pwd" type="password" minlength="6">
                     <mat-hint align="end">{{input.value.length || 0}}/6</mat-hint>
-                    <mat-error *ngIf="registerFormGroup.controls['pwd'].invalid">{{getPasswordErrorMessage()}}</mat-error>
+                    <mat-error *ngIf="registerFormGroup.controls['pwd'].invalid">{{getPasswordErrorMessage()}}
+                    </mat-error>
                 </mat-form-field>
             </form>
         </mat-card-content>
         <mat-card-footer fxLayout="column" fxLayoutAlign="center center" style="margin-bottom: 1%;">
             <button mat-raised-button color="accent" type="submit" (click)="onSubmit()"
                 style="margin-bottom: 4%">Register</button>
-            <button mat-stroked-button (click)="continueWithGoogle()">
+            <button mat-raised-button (click)="continueWithGoogle()">
                 <img class="googleIcon" src="../../../assets/icons/google-icon.png"
                     style="max-height: 50%; width: auto">
                 Continue with Google
             </button>
-            <span>Already have an account?<button mat-flat-button color="basic" (click)="redirectToLogin()">Log
-                    In</button></span>
+            <div style="margin-top: 2%;">
+                <span>Already have an account?
+                    <button mat-flat-button style="background-color: #FFB703;"
+                        (click)="redirectToLogin()">LogIn</button>
+                </span>
+            </div>
         </mat-card-footer>
     </mat-card>
 </div>

@@ -1,11 +1,11 @@
-<mat-card style="margin: 2% 2% 2% 2%; height: 85%; width: auto">
-    <mat-card-title fxLayout="row" fxLayoutAlign="center center">
+<div style="margin: 2% 2% 2% 2%; height: 85%; width: auto">  <!-- aici era <mat-card> -->
+    <mat-card-title fxLayout="row" fxLayoutAlign="center center" style="color: white;">
         {{getMonthName() + " " + currentDate.getFullYear()}}
     </mat-card-title>
-    <mat-card-content style="height: 85%; margin-top: 2%;">
+    <div style="height: 85%; margin-top: 2%;"> <!-- aici era <mat-card-title> -->
         <div fxLayout="column" fxLayoutAlign="center center"
             style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
-            <span class="day-name" class="day-name">Monday</span>
+            <span class="day-name">Monday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%;">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Monday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
@@ -73,5 +73,5 @@
                 </div>
             </div>
         </div>
-    </mat-card-content>
-</mat-card>
+    </div>
+</div>
