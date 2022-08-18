@@ -1,7 +1,9 @@
-<app-nav [homeDays]="homeDays?.daysLeft">
-</app-nav>
-<router-outlet>
-    <div fxLayout="row" fxLayoutAlign="center center" class="load-container" *ngIf="loadingService.isLoading | async">
-        <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
-    </div>
-</router-outlet>
+<div class="test" style="height: 100vh;">
+    <app-nav [homeDays]="homeDays?.daysLeft"></app-nav>
+    <router-outlet>
+        <div fxLayout="row" fxLayoutAlign="center center" class="load-container"
+            *ngIf="loadingService.isLoading | async">
+            <mat-progress-spinner mode="indeterminate" color="accent"></mat-progress-spinner>
+        </div>
+    </router-outlet>
+</div>
