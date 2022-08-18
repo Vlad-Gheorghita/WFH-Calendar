@@ -11,7 +11,6 @@ import { WfhService } from '../libs/services/wfh.service';
   styleUrls: ['./core.component.scss']
 })
 export class CoreComponent implements OnInit {
-  workedMonth: Wfh = new Wfh()
   homeDays: any;
 
   constructor(private calendarService: CalendarService, private wfhService: WfhService, public loadingService: LoadingService) { }
@@ -21,9 +20,7 @@ export class CoreComponent implements OnInit {
   }
 
   private getWfh() {
-    this.wfhService.getWfhByUserId(this.wfhService.userId, this.calendarService.monthNameList[new Date().getMonth()]).pipe(finalize(() => {
-      this.loadingService.setLoading(false);
-    }))
+    this.wfhService.getWfhByUserId(this.wfhService.userId, this.calendarService.monthNameList[new Date().getMonth()])
       .subscribe(result => {
         this.loadingService.setLoading(false);
         const mappedResult = result.docs.map(doc => doc.data());

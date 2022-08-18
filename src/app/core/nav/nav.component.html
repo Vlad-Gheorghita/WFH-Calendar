@@ -3,25 +3,22 @@
     <span>WFH Calendar</span>
     <span class="spacer"></span>
     
-    <span style="margin-right: 1%;">{{user.displayName | titlecase}}</span>
-    <fa-icon [icon]="iconList.get('office')"></fa-icon>
+    <span style="margin-right: 1%;">{{user.displayName| titlecase}}</span>
+    <fa-icon [icon]="iconList.get('office')" title="Number of days to go to the office"></fa-icon>
     <div style="margin-left: 0.1%; margin-right: 0.7%">{{officeDays}}</div>
-    <fa-icon [icon]="iconList.get('home')"></fa-icon>
+    <fa-icon [icon]="iconList.get('home')" title="Number of days remainging to work home"></fa-icon>
     <div style="margin-left: 0.1%; margin-right: 0.7%">{{homeDays}}</div>
     <button mat-icon-button [matMenuTriggerFor]="menu">
-        <fa-icon [icon]="iconList.get('menu')"></fa-icon>
+        <fa-icon [icon]="iconList.get('menu')" class="fa-xl"></fa-icon>
     </button>
     <mat-menu #menu="matMenu">
         <button mat-menu-item>
             <fa-icon [icon]="iconList.get('settings')"></fa-icon>
             <span style="margin-left: 5%;">Settings</span>
         </button>
-        <button mat-menu-item>
+        <button mat-menu-item (click)="logOut()">
             <fa-icon [icon]="iconList.get('logout')"></fa-icon>
             <span style="margin-left: 5%;">Log Out</span>
         </button>
     </mat-menu>
-    <!-- <a style="margin-right: 0.7%; cursor: pointer;" title="Sign Out" (click)="logOut()">
-        <fa-icon [icon]="iconList.get('logout')"></fa-icon>
-    </a> -->
 </mat-toolbar>
