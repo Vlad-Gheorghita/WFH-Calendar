@@ -93,8 +93,8 @@ export class AuthService {
   }
 
   // Sign in with Google
-  GoogleAuth() {
-    return this.AuthLogin(new auth.GoogleAuthProvider()).then((res: any) => {
+  GoogleAuth(isLogin: boolean) {
+    return this.AuthLogin(new auth.GoogleAuthProvider(), isLogin).then((res: any) => {
       if (res) {
         this.router.navigate(['app']);
       }
@@ -102,7 +102,7 @@ export class AuthService {
   }
 
   // Auth logic to run auth providers
-  AuthLogin(provider: any) {
+  AuthLogin(provider: any, isLogin: boolean) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
@@ -110,7 +110,8 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
         });
-        this.SetUserData(result.user);
+        if (!isLogin)
+          this.SetUserData(result.user);
       })
       .catch((error) => {
         this.toastr.error(error.message, "Something Went Wrong")
@@ -123,6 +124,7 @@ export class AuthService {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
+
     const userData: User = {
       uid: user.uid,
       email: user.email.toLowerCase(),

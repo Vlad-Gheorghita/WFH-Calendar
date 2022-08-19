@@ -23,7 +23,7 @@ export class RegisterComponent{
    }
 
   continueWithGoogle() {
-    this.authService.GoogleAuth();
+    this.authService.GoogleAuth(false);
   }
 
   register(email: string, password: string){

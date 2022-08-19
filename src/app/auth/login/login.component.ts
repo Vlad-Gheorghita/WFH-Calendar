@@ -28,7 +28,7 @@ export class LoginComponent {
   }
 
   continueWithGoogle() {
-    this.authService.GoogleAuth();
+    this.authService.GoogleAuth(true);
   }
 
   redirectToRegister() {
