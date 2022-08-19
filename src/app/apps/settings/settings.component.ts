@@ -25,7 +25,7 @@ export class SettingsComponent implements OnInit {
     })
   }
 
-  sendReset(){
+  sendReset() {
     this.userService.changeUserPassword();
     this.toastr.info('A link for resetting the password has been sent to your email')
   }

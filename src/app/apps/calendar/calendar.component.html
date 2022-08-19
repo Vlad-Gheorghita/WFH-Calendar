@@ -1,15 +1,18 @@
-<div style="margin: 2% 2% 2% 2%; height: 85%; width: auto">  <!-- aici era <mat-card> -->
+<div style="margin: 2% 2% 2% 2%; height: 85%; width: auto">
+    <!-- aici era <mat-card> -->
     <mat-card-title fxLayout="row" fxLayoutAlign="center center" style="color: white;">
         {{getMonthName() + " " + currentDate.getFullYear()}}
     </mat-card-title>
-    <div style="height: 85%; margin-top: 2%;"> <!-- aici era <mat-card-title> -->
+    <div style="height: 85%; margin-top: 2%;">
+        <!-- aici era <mat-card-title> -->
         <div fxLayout="column" fxLayoutAlign="center center"
             style="width: 13.28%; float:left; margin-left: 0.5%; margin-right: 0.5%;">
             <span class="day-name">Monday</span>
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%;">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Monday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [date]="createDateWithDayNumber(dayNumber)" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [date]="createDateWithDayNumber(dayNumber)"
+                        [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -19,7 +22,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Tuesday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -29,7 +33,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Wednesday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -39,7 +44,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Thursday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -49,7 +55,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Friday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -59,7 +66,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Saturday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>
@@ -69,7 +77,8 @@
             <div fxLayout="column" fxLayoutAlign="center center" style="width: 100%">
                 <div class="calendar-day" *ngFor="let dayNumber of getArrayOfDaysWithSameName('Sunday')"
                     style="width: 100%; margin-top: 2%; margin-bottom: 2%;">
-                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber" [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
+                    <app-day-card [workedMonth]="workedMonth" [day]="dayNumber"
+                        [isOfficeDay]="workedMonth.daysWFH.includes(dayNumber)"></app-day-card>
                 </div>
             </div>
         </div>

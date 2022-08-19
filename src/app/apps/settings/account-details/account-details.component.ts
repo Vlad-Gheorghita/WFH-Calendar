@@ -16,23 +16,23 @@ export class AccountDetailsComponent implements OnInit {
   editIcon = faPen;
   isEditUsername = false;
   isEditEmail = false;
-  usernameForm: FormControl = new FormControl('',[Validators.required]);
+  usernameForm: FormControl = new FormControl('', [Validators.required]);
   emailForm: FormControl = new FormControl('', [Validators.required, Validators.email]);
-  
+
   constructor(private userService: UserService) { }
 
   ngOnInit(): void {
   }
 
-  editUsername(){
+  editUsername() {
     this.isEditUsername = true;
   }
 
-  editEmail(){
+  editEmail() {
     this.isEditEmail = true;
   }
 
-  onChangeUsername(){
+  onChangeUsername() {
     this.isEditUsername = false;
     this.currentUser.displayName = this.usernameForm.value;
     this.currentUser.displayName = this.currentUser.displayName.toLowerCase();
@@ -41,12 +41,12 @@ export class AccountDetailsComponent implements OnInit {
   }
 
   //To be implemented
-  onChangeEmail(){
+  onChangeEmail() {
     this.isEditEmail = false;
     this.emailForm.setValue('');
   }
 
-  updateUser(){
+  updateUser() {
     this.userService.updateUser(this.currentUser);
   }
 }

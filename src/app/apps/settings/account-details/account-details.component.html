@@ -17,12 +17,13 @@
                 <form (ngSubmit)="onChangeUsername()" *ngIf="isEditUsername">
                     <mat-form-field>
                         <mat-label>Username</mat-label>
-                        <input [formControl]="usernameForm" matInput type="text" placeholder="Enter a username" required>
+                        <input [formControl]="usernameForm" matInput type="text" placeholder="Enter a username"
+                            required>
                     </mat-form-field>
                 </form>
-                
             </div>
-            <div *ngIf="!isEditUsername" class="clickable" style="height: 100%; float:left; margin-left:1%" fxLayout="row" fxLayoutAlign="center center" (click)="editUsername()">
+            <div *ngIf="!isEditUsername" class="clickable" style="height: 100%; float:left; margin-left:1%"
+                fxLayout="row" fxLayoutAlign="center center" (click)="editUsername()">
                 <fa-icon [icon]="editIcon" class="fa-lg"></fa-icon>
             </div>
         </div>
@@ -41,7 +42,8 @@
                     </mat-form-field>
                 </form>
             </div>
-            <div *ngIf="!isEditEmail" class="clickable" style="height: 100%; float:left; margin-left:1%" fxLayout="row" fxLayoutAlign="center center" (click)="editEmail()">
+            <div *ngIf="!isEditEmail" class="clickable" style="height: 100%; float:left; margin-left:1%" fxLayout="row"
+                fxLayoutAlign="center center" (click)="editEmail()">
                 <fa-icon [icon]="editIcon" class="fa-lg"></fa-icon>
             </div>
         </div>

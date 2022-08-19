@@ -20,7 +20,7 @@ export class NavComponent implements OnInit {
   officeDays!: number;
   isSettings!: any;
 
-  constructor(private router: Router,private authService: AuthService, private calendarService: CalendarService, public wfhService: WfhService, private userService: UserService) {
+  constructor(private router: Router, private authService: AuthService, private calendarService: CalendarService, public wfhService: WfhService, private userService: UserService) {
   }
 
   ngOnInit(): void {
@@ -40,11 +40,11 @@ export class NavComponent implements OnInit {
     this.authService.SignOut();
   }
 
-  goToSettings(){
+  goToSettings() {
     this.router.navigate(['app/settings']);
   }
 
-  goToCalendar(){
+  goToCalendar() {
     this.router.navigate(['app/calendar']);
   }
 

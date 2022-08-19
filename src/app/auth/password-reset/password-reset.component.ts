@@ -8,17 +8,17 @@ import { AuthService } from 'src/app/libs/auth/auth.service';
   templateUrl: './password-reset.component.html',
   styleUrls: ['./password-reset.component.scss']
 })
-export class PasswordResetComponent{
+export class PasswordResetComponent {
 
   resetForm: FormGroup;
 
   constructor(private authService: AuthService, private router: Router) {
     this.resetForm = new FormGroup({
-      email: new FormControl('',[Validators.required, Validators.email])
+      email: new FormControl('', [Validators.required, Validators.email])
     })
-   }
+  }
 
-  onSubmit(){
+  onSubmit() {
     if (!this.resetForm.controls['email'].valid)
       return;
 
@@ -32,7 +32,7 @@ export class PasswordResetComponent{
     return this.resetForm.controls['email'].hasError('email') ? 'Not a valid email' : '';
   }
 
-  redirectToLogin(){
+  redirectToLogin() {
     this.router.navigate(['auth/login']);
   }
 }

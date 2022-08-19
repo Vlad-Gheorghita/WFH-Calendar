@@ -8,7 +8,7 @@ import { AuthService } from 'src/app/libs/auth/auth.service';
   templateUrl: './register.component.html',
   styleUrls: ['./register.component.scss']
 })
-export class RegisterComponent{
+export class RegisterComponent {
   emailField: FormControl;
   passwordField: FormControl;
   registerFormGroup: FormGroup;
@@ -20,17 +20,17 @@ export class RegisterComponent{
       email: this.emailField,
       pwd: this.passwordField
     })
-   }
+  }
 
   continueWithGoogle() {
     this.authService.GoogleAuth(false);
   }
 
-  register(email: string, password: string){
-    this.authService.SignUp(email,password);
+  register(email: string, password: string) {
+    this.authService.SignUp(email, password);
   }
-  
-  redirectToLogin(){
+
+  redirectToLogin() {
     this.router.navigate(['auth/login'])
   }
 

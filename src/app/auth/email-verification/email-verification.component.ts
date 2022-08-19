@@ -1,7 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from 'src/app/libs/auth/auth.service';
-import { User } from 'src/app/libs/models/user';
 
 @Component({
   selector: 'app-email-verification',
@@ -17,11 +16,11 @@ export class EmailVerificationComponent implements OnInit {
     this.user = JSON.parse(localStorage.getItem('user')!);
   }
 
-  redirectToLogin(){
+  redirectToLogin() {
     this.router.navigate(['auth/login']);
   }
 
-  resendVerificationEmail(){
+  resendVerificationEmail() {
     this.authService.SendVerificationMail();
   }
 

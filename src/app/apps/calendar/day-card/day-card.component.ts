@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faHouseUser } from '@fortawesome/free-solid-svg-icons';
 import { Wfh } from 'src/app/libs/models/wfh';

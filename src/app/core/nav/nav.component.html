@@ -2,7 +2,7 @@
     <mat-icon style="margin-right: 0.3%;">calendar_today</mat-icon>
     <span>WFH Calendar</span>
     <span class="spacer"></span>
-    
+
     <span style="margin-right: 1%;">{{user.displayName| titlecase}}</span>
     <fa-icon [icon]="iconList.get('office')" title="Number of days to go to the office"></fa-icon>
     <div style="margin-left: 0.1%; margin-right: 0.7%">{{officeDays}}</div>
@@ -13,13 +13,13 @@
     </button>
     <mat-menu #menu="matMenu">
         <button *ngIf="!isSettings.settings" mat-menu-item (click)="goToSettings()">
-                <fa-icon [icon]="iconList.get('settings')"></fa-icon>
-                <span style="margin-left: 5%;">Settings</span>
+            <fa-icon [icon]="iconList.get('settings')"></fa-icon>
+            <span style="margin-left: 5%;">Settings</span>
         </button>
         <button *ngIf="isSettings.settings" mat-menu-item (click)="goToCalendar()">
             <fa-icon [icon]="iconList.get('calendar')"></fa-icon>
             <span style="margin-left: 5%;">Calendar</span>
-    </button>
+        </button>
         <button mat-menu-item (click)="logOut()">
             <fa-icon [icon]="iconList.get('logout')"></fa-icon>
             <span style="margin-left: 5%;">Log Out</span>

@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { Event, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { AuthService } from 'src/app/libs/auth/auth.service';
 
 @Component({
@@ -22,7 +22,6 @@ export class LoginComponent {
     })
   }
 
-
   login(email: string, password: string) {
     this.authService.SignIn(email, password)
   }
@@ -35,7 +34,7 @@ export class LoginComponent {
     this.router.navigate(['auth/register'])
   }
 
-  redirectToPasswordReset(){
+  redirectToPasswordReset() {
     this.router.navigate(['auth/password-reset'])
   }
 
