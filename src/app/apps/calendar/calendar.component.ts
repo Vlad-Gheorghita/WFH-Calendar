@@ -2,6 +2,7 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Wfh } from 'src/app/libs/models/wfh';
 import { CalendarService } from 'src/app/libs/services/calendar.service';
+import { UserService } from 'src/app/libs/services/user.service';
 import { WfhService } from 'src/app/libs/services/wfh.service';
 
 @Component({
@@ -13,11 +14,12 @@ export class CalendarComponent implements OnInit {
   workedMonth: Wfh = new Wfh();
   currentDate: Date;
 
-  constructor(private wfhService: WfhService, private calendarService: CalendarService) {
+  constructor(private wfhService: WfhService, private calendarService: CalendarService, private userService: UserService) {
     this.currentDate = calendarService.date;
   }
   ngOnInit(): void {
     this.getWfh();
+    this.userService.isSettings.settings = false;
   }
 
 

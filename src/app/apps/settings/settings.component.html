@@ -1,17 +1,17 @@
 <div style="height: 93vh;">
     <div fxLayout="column" fxLayoutAlign="start center"
-        style="width: 15%; height: 100%; float:left; background-color: white;">
+        style="width: 15%; height: 100%; float:left; background-color: #023047">
         <div fxLayout="row" fxLayoutAlign="center center"
-            style="width: 100%; height: 10%; background-color: aqua; justify-content: center;">
-            <h1 style="margin-bottom: 0;">DisplayName</h1>
+            style="width: 100%; height: 10%; background-color: #FFB703; justify-content: center;">
+            <h1 style="margin-bottom: 0;">{{currentUser.displayName | titlecase }}</h1>
         </div>
-        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" vertical="true" style="width: 100%; margin-top: 5%;">
-            <mat-button-toggle #accountDetails value="accountDetails" checked="true" style="width: 100%;">Account Details</mat-button-toggle>
-            <mat-button-toggle #changePassword value="changePassword" style="margin-top: 10%;">Change Password</mat-button-toggle>
+        <mat-button-toggle-group name="fontStyle" aria-label="Font Style" vertical="true" style="width: 100%; margin-top: 10%;">
+            <mat-button-toggle #accountDetails value="accountDetails" checked="true" style="width: 100%; background-color: #ffd740;">Account Details</mat-button-toggle>
+            <mat-button-toggle #changePassword value="changePassword" style="margin-top: 7%; background-color: #ffd740;">Change Password</mat-button-toggle>
         </mat-button-toggle-group>
     </div>
-    <div style="width: 85%; height: 100%; float: right; background-color: whitesmoke;">
-        <app-account-details *ngIf="accountDetails.checked"></app-account-details>
+    <div style="width: 85%; height: 100%; float: right; background-color: #219EBC;">
+        <app-account-details [currentUser]="currentUser" *ngIf="accountDetails.checked"></app-account-details>
         <app-change-password *ngIf="changePassword.checked"></app-change-password>
     </div>
 </div>

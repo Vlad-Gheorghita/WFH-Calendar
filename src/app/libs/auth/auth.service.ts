@@ -43,13 +43,12 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
         });
-        // this.SetUserData(result.user);
       })
       .catch((error) => {
-        // window.alert(error.message);
         this.toastr.error(error.message, "Log In Failed");
       });
   }
+
   // Sign up with email/password
   SignUp(email: string, password: string) {
     return this.afAuth
@@ -59,14 +58,13 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         localStorage.setItem('user', JSON.stringify(result.user));
-        // this.router.navigate(['app']);
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        // window.alert(error.message);
         this.toastr.error(error.message, "Registration Failed")
       });
   }
+
   // Send email verfificaiton when new user sign up
   SendVerificationMail() {
     return this.afAuth.currentUser
@@ -75,19 +73,19 @@ export class AuthService {
         this.router.navigate(['auth/verify-email']);
       });
   }
+
   // Reset Forggot password
   ForgotPassword(passwordResetEmail: string) {
     return this.afAuth
       .sendPasswordResetEmail(passwordResetEmail)
       .then(() => {
-        // window.alert('Password reset email sent, check your inbox.');
         this.toastr.info('Password reset email sent, check your inbox.');
       })
       .catch((error) => {
-        // window.alert(error);
         this.toastr.error(error.message, "Something Went Wrong");
       });
   }
+
   // Returns true when user is looged in and email is verified
   get isLoggedIn(): boolean {
     const user = JSON.parse(localStorage.getItem('user')!);
@@ -102,6 +100,7 @@ export class AuthService {
       }
     });
   }
+
   // Auth logic to run auth providers
   AuthLogin(provider: any) {
     return this.afAuth
@@ -114,7 +113,6 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        // window.alert(error);
         this.toastr.error(error.message, "Something Went Wrong")
       });
   }
@@ -135,6 +133,7 @@ export class AuthService {
       merge: true,
     });
   }
+
   // Sign out
   SignOut() {
     return this.afAuth.signOut().then(() => {

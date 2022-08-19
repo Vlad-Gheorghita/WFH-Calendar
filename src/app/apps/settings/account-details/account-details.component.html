@@ -1,19 +1,18 @@
-<mat-card style="height: 88%; margin: 2% 2% 2% 2%">
+<mat-card style="height: 88%; margin: 2% 2% 2% 2%;background-color: #8ECAE6;">
     <mat-card-header style="height: fit-content; margin-top: 2%;">
-
         <mat-card-title style="font-size: 300%;">
             <fa-icon [icon]="unknownUserIcon" class="fa-xl"></fa-icon>
             Account Details
         </mat-card-title>
     </mat-card-header>
-    <mat-card-content fxLayout="column" style="height: 88%;margin-top: 5%;">
+    <mat-card-content fxLayout="column" style="height: 83%;margin-top: 5%;">
         <div>
             <div style="height: 100%;width: 15%; float: left;" fxLayout="column" fxLayoutAlign="center end">
                 <h1 style="margin-bottom: 0;">Username: </h1>
             </div>
             <div style="width: 20%; float: left; margin-left: 1%;">
-                <mat-card *ngIf="!isEditUsername">
-                    <mat-card-content style="font-size: 150%;">Vlad</mat-card-content>
+                <mat-card *ngIf="!isEditUsername" style="background-color: #219EBC">
+                    <mat-card-content style="font-size: 150%;">{{currentUser.displayName}}</mat-card-content>
                 </mat-card>
                 <form (ngSubmit)="onChangeUsername()" *ngIf="isEditUsername">
                     <mat-form-field>
@@ -32,8 +31,8 @@
                 <h1 style="margin-bottom: 0;">Email: </h1>
             </div>
             <div style="width: 20%; float: left; margin-left: 1%;">
-                <mat-card *ngIf="!isEditEmail">
-                    <mat-card-content style="font-size: 150%;">vlad@gmail.com</mat-card-content>
+                <mat-card *ngIf="!isEditEmail" style="background-color: #219EBC;">
+                    <mat-card-content style="font-size: 150%;">{{currentUser.email}}</mat-card-content>
                 </mat-card>
                 <form (ngSubmit)="onChangeEmail()" *ngIf="isEditEmail">
                     <mat-form-field>

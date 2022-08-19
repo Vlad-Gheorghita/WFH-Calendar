@@ -12,10 +12,14 @@
         <fa-icon [icon]="iconList.get('menu')" class="fa-xl"></fa-icon>
     </button>
     <mat-menu #menu="matMenu">
-        <button mat-menu-item>
-            <fa-icon [icon]="iconList.get('settings')"></fa-icon>
-            <span style="margin-left: 5%;">Settings</span>
+        <button *ngIf="!isSettings.settings" mat-menu-item (click)="goToSettings()">
+                <fa-icon [icon]="iconList.get('settings')"></fa-icon>
+                <span style="margin-left: 5%;">Settings</span>
         </button>
+        <button *ngIf="isSettings.settings" mat-menu-item (click)="goToCalendar()">
+            <fa-icon [icon]="iconList.get('calendar')"></fa-icon>
+            <span style="margin-left: 5%;">Calendar</span>
+    </button>
         <button mat-menu-item (click)="logOut()">
             <fa-icon [icon]="iconList.get('logout')"></fa-icon>
             <span style="margin-left: 5%;">Log Out</span>
