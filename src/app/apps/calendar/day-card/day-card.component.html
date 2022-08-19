@@ -1,0 +1,9 @@
+<mat-card style="height: 85px;" (click)="toggleOfficeDayToWorkedMonth()" class="card">
+    <mat-card-title *ngIf="checkIfToday()" class="content-color" fxLayout="row" fxLayoutAlign="end center">{{day}}
+    </mat-card-title>
+    <mat-card-title *ngIf="!checkIfToday()" class="grayed-out-color" fxLayout="row" fxLayoutAlign="end center">{{day}}
+    </mat-card-title>
+    <mat-card-content fxLayout="row" fxLayoutAlign="center none" *ngIf="isOfficeDay">
+        <fa-icon [icon]="officeDay" class="fa-3x"></fa-icon>
+    </mat-card-content>
+</mat-card>

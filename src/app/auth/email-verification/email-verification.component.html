@@ -1,0 +1,14 @@
+<div style="height: 100vh; width: auto" fxLayout="row" fxLayoutAlign="center center" class="background">
+    <mat-card style="width: 15%;" class="card">
+        <mat-card-title fxLayout="row" fxLayoutAlign="center center">Thank You for Registering</mat-card-title>
+        <mat-card-content fxLayout="column" fxLayoutAlign="space-around center" *ngIf="user">
+            <p>We have sent a confirmation email to <strong>{{user.email}}.</strong></p>
+            <p>Please check your email and click on the link to verify your email address.</p>
+        </mat-card-content>
+        <mat-card-footer fxLayout="row" fxLayoutAlign="center center" style="margin-bottom: 1%;">
+            <button mat-raised-button color="accent" (click)="redirectToLogin()" style="margin-right: 3%">Sign
+                In</button>
+            <button mat-raised-button color="accent">Resend Verification Email</button>
+        </mat-card-footer>
+    </mat-card>
+</div>

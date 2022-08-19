@@ -1,0 +1,51 @@
+<mat-card style="height: 88%; margin: 2% 2% 2% 2%;background-color: #8ECAE6;">
+    <mat-card-header style="height: fit-content; margin-top: 2%;">
+        <mat-card-title style="font-size: 300%;">
+            <fa-icon [icon]="unknownUserIcon" class="fa-xl"></fa-icon>
+            Account Details
+        </mat-card-title>
+    </mat-card-header>
+    <mat-card-content fxLayout="column" style="height: 83%;margin-top: 5%;">
+        <div>
+            <div style="height: 100%;width: 15%; float: left;" fxLayout="column" fxLayoutAlign="center end">
+                <h1 style="margin-bottom: 0;">Username: </h1>
+            </div>
+            <div style="width: 30%; float: left; margin-left: 1%;">
+                <mat-card *ngIf="!isEditUsername" style="background-color: #219EBC">
+                    <mat-card-content style="font-size: 150%;">{{currentUser.displayName}}</mat-card-content>
+                </mat-card>
+                <form (ngSubmit)="onChangeUsername()" *ngIf="isEditUsername">
+                    <mat-form-field>
+                        <mat-label>Username</mat-label>
+                        <input [formControl]="usernameForm" matInput type="text" placeholder="Enter a username"
+                            required>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div *ngIf="!isEditUsername" class="clickable" style="height: 100%; float:left; margin-left:1%"
+                fxLayout="row" fxLayoutAlign="center center" (click)="editUsername()">
+                <fa-icon [icon]="editIcon" class="fa-lg"></fa-icon>
+            </div>
+        </div>
+        <div style="margin-top: 2%;">
+            <div style="height: 100%;width: 15%; float: left;" fxLayout="column" fxLayoutAlign="center end">
+                <h1 style="margin-bottom: 0;">Email: </h1>
+            </div>
+            <div style="width: 30%; float: left; margin-left: 1%;">
+                <mat-card *ngIf="!isEditEmail" style="background-color: #219EBC;">
+                    <mat-card-content style="font-size: 150%;">{{currentUser.email}}</mat-card-content>
+                </mat-card>
+                <form (ngSubmit)="onChangeEmail()" *ngIf="isEditEmail">
+                    <mat-form-field>
+                        <mat-label>Email</mat-label>
+                        <input [formControl]="emailForm" matInput type="email" placeholder="example@email.com" required>
+                    </mat-form-field>
+                </form>
+            </div>
+            <div *ngIf="!isEditEmail" class="clickable" style="height: 100%; float:left; margin-left:1%" fxLayout="row"
+                fxLayoutAlign="center center" (click)="editEmail()">
+                <fa-icon [icon]="editIcon" class="fa-lg"></fa-icon>
+            </div>
+        </div>
+    </mat-card-content>
+</mat-card>

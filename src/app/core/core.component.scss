@@ -1,0 +1,14 @@
+.load-container {
+    position: fixed;
+    width: 100%;
+    z-index: 99;
+    height: 100vh;
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.test {
+    background-image: url("../../assets/background/chalk-board.jpg");
+    background-size: 100vh;
+    background-size: 100vw;
+    background-size: cover;
+}
