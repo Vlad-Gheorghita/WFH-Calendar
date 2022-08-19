@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { AngularFirestore, AngularFirestoreDocument } from '@angular/fire/compat/firestore';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
+import * as auth from 'firebase/auth';
 import { User } from '../models/user';
 
 @Injectable({
@@ -21,5 +22,11 @@ export class UserService {
     return this.afs.doc(`users/${user.uid}`).update({ displayName: user.displayName, email: user.email });
   }
 
+  changeUserPassword()
+  { 
+
+    const userEmail = JSON.parse(localStorage.getItem('user')!).email
+    this.afAuth.sendPasswordResetEmail(userEmail);
+  }
   
 }

@@ -20,6 +20,7 @@ import { MatGridListModule } from '@angular/material/grid-list';
 //Material Form Controls
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
+import { ToastrModule } from 'ngx-toastr';
 
 
 @NgModule({
@@ -40,7 +41,10 @@ import { MatInputModule } from '@angular/material/input';
     MatFormFieldModule,
     MatInputModule,
     ReactiveFormsModule,
-    FormsModule
+    FormsModule,
+    ToastrModule.forRoot({
+      positionClass: "toast-bottom-left"
+    }),
   ]
 })
 export class SettingsModule { }
