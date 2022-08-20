@@ -50,5 +50,3 @@ Thumbs.db
 .runtimeconfig.json
 
 .angular
-
-src/environments/environment.prod.ts
