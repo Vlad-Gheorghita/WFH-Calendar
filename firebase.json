@@ -1,5 +1,6 @@
 {
   "hosting": {
+    "target": "wfh-calendar",
     "public": "dist/WFH-Calendar",
     "ignore": [
       "firebase.json",
