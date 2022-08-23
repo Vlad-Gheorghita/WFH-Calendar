@@ -58,7 +58,7 @@ export class AuthService {
         up and returns promise */
         this.SendVerificationMail();
         localStorage.setItem('user', JSON.stringify(result.user));
-        this.SetUserData(result.user);
+        this.SetUserData(result.user, false);
       })
       .catch((error) => {
         this.toastr.error(error.message, "Registration Failed")
@@ -93,8 +93,8 @@ export class AuthService {
   }
 
   // Sign in with Google
-  GoogleAuth(isLogin: boolean) {
-    return this.AuthLogin(new auth.GoogleAuthProvider(), isLogin).then((res: any) => {
+  GoogleAuth() {
+    return this.AuthLogin(new auth.GoogleAuthProvider(), true).then((res: any) => {
       if (res) {
         this.router.navigate(['app']);
       }
@@ -102,7 +102,7 @@ export class AuthService {
   }
 
   // Auth logic to run auth providers
-  AuthLogin(provider: any, isLogin: boolean) {
+  AuthLogin(provider: any, isGoogleAuth: boolean) {
     return this.afAuth
       .signInWithPopup(provider)
       .then((result) => {
@@ -110,8 +110,7 @@ export class AuthService {
           localStorage.setItem('user', JSON.stringify(result.user));
           this.router.navigate(['app']);
         });
-        if (!isLogin)
-          this.SetUserData(result.user);
+          this.SetUserData(result.user, isGoogleAuth);
       })
       .catch((error) => {
         this.toastr.error(error.message, "Something Went Wrong")
@@ -120,15 +119,16 @@ export class AuthService {
   /* Setting up user data when sign in with username/password, 
   sign up with username/password and sign in with social auth  
   provider in Firestore database using AngularFirestore + AngularFirestoreDocument service */
-  SetUserData(user: any) {
+  SetUserData(user: any, isGoogleAuth: boolean) {
     const userRef: AngularFirestoreDocument<any> = this.afs.doc(
       `users/${user.uid}`
     );
 
+    
     const userData: User = {
       uid: user.uid,
       email: user.email.toLowerCase(),
-      displayName: user.email.substring(0, user.email.indexOf('@')).toLowerCase(),
+      displayName: isGoogleAuth ? user.displayName : user.email.substring(0, user.email.indexOf('@')).toLowerCase(),
       emailVerified: user.emailVerified
     };
     return userRef.set(userData, {
