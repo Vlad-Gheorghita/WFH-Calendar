@@ -1,27 +1,57 @@
-# WFHCalendar
+# :calendar: WFH Calendar
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.2.9.
+This custom calendar allows you to mark a specific day when working from home in the current month in order to keep track of the remaining days available. This application was made with Angular and Firebase as backend and hosting. You can access the website by clicking [here](https://wfh-calendar.web.app).
 
-## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+## 🔧 Architecture
 
-## Code scaffolding
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/WFH-Calendar%20architecture.png">
+</p><br><br>
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## 🎞️ Preview of the web application
+### Login and register page:
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/login.png" style="width: 38%">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/register.png" style="width: 36%">
+</p>
 
-## Build
+<br>
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+### Email confirmation page:
+After registering you will receive a confirmation email. If the email is not confirmed, it will not allow you to log in.
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/email%20verification.png">
+</p><br>
 
-## Running unit tests
+### Password reset page:
+If you cannot remember your password, you can click forgot password and will redirect you to the password reset page.
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/forgot%20password.png">
+</p><br>
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+### Calendar page:
+By logging in you will be redirected to the calendar page where you can mark the days by your choice.
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/main%20page.png">
+</p><br>
 
-## Running end-to-end tests
+### Settings page:
+On the settings page, you will see your account details and will be able to change your username and email. Also, you are able to change the password by receiving a password reset email.
+<p align="center">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/settings%20page.png">
+</p><br><br>
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+## :page_with_curl: Features
 
-## Further help
+🔹 User authentication with Firebase Authentication (login and register).<br>
+🔹 Authenticate with Google.<br>
+🔹 Check/Uncheck days.<br>
+<br>
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+## :nut_and_bolt: What I used:
+🌐 `Angular`<br>
+🖥️ `TypeScript`<br>
+💻 `Firebase`<br>
+💻 `CSS & HTML`<br>
+<br>
