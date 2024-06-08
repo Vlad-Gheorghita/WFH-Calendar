@@ -1,6 +1,7 @@
 # :calendar: WFH Calendar
 
-This custom calendar allows you to mark a specific day when working from home in the current month in order to keep track of the remaining days available. This application was made with Angular and Firebase as backend and hosting. You can access the website by clicking [here](https://wfh-calendar.web.app).
+
+This custom calendar lets you mark specific days when working from home during the current month, helping you track the remaining available days. The application is built with Angular and uses Firebase for the backend and hosting. You can access the website by clicking [here](https://wfh-calendar.web.app).
 
 
 ## 🔧 Architecture
