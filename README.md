@@ -1,58 +1,148 @@
-# :calendar: WFH Calendar
+# WFH Calendar 📅
 
+A minimalist, modern calendar app for tracking your work-from-home days. Built with Angular & Firebase, it helps you manage your remote schedule, view remaining WFH days, and update your account securely.
 
-This custom calendar lets you mark specific days when working from home during the current month, helping you track the remaining available days. The application is built with Angular and uses Firebase for the backend and hosting. You can access the website by clicking [here](https://wfh-calendar.web.app).
+---
 
+## ✨ Features
 
-## 🔧 Architecture
+• 🔒 Secure authentication (Firebase Auth)  
+• 🟢 Google sign-in  
+• 📅 Mark/unmark WFH days on a monthly calendar  
+• 🔢 View remaining WFH days  
+• 👤 Account management (change username, email, password)  
+• ✉️ Password reset via email  
+• 📱 Responsive UI (Angular Material, Flex Layout)  
 
+---
+
+## 🛠️ Tech Stack
+
+• 🅰️ Angular 14+  
+• 🔥 Firebase (Auth, Firestore, Hosting)  
+• 🟦 TypeScript  
+• 🎨 Angular Material  
+• 📐 Flex Layout  
+• ⭐ FontAwesome  
+• 💅 SCSS/CSS, HTML  
+
+---
+
+## 📁 Project Structure
+
+```
+src/
+  app/
+    auth/         # Authentication (login, register, password reset)
+    core/         # Core layout, navigation
+    apps/
+      calendar/   # Calendar feature
+      settings/   # Account settings
+    libs/
+      models/     # Data models (User, WFH)
+      services/   # Business logic/services
+      guards/     # Route guards
+    shared/       # Shared modules (Firebase, etc)
+  assets/         # Images, icons
+  environments/   # Environment configs
+```
+
+---
+
+## 🚦 Getting Started
+
+### ⚙️ Prerequisites
+• Node.js >= 16.x  
+• npm >= 8.x  
+• Angular CLI (`npm install -g @angular/cli`)  
+
+### 📝 Step-by-Step Installation & Setup Guide
+
+#### 1️⃣ Clone the Repository
+```bash
+git clone https://github.com/Vlad-Gheorghita/WFH-Calendar.git
+cd WFH-Calendar
+```
+
+#### 2️⃣ Install Dependencies
+```bash
+npm install
+```
+
+#### 3️⃣ Configure Firebase
+• Go to the [Firebase Console](https://console.firebase.google.com/)  
+• Create a new project or select your existing project  
+• Add your Firebase config to `src/environments/environment.ts`  
+• Enable Authentication (Email/Password, Google)  
+• Set up Firestore database  
+
+#### 4️⃣ Run the App Locally
+```bash
+ng serve
+# Visit http://localhost:4200
+```
+
+---
+
+## 🖼️ Screenshots
+
+**Login & Register**
 <p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/WFH-Calendar%20architecture.png">
-</p><br><br>
-
-## 🎞️ Preview of the web application
-### Login and register page:
-<p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/login.png" style="width: 38%">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/register.png" style="width: 36%">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/login.png" width="38%">
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/register.png" width="36%">
 </p>
 
-<br>
-
-### Email confirmation page:
-After registering you will receive a confirmation email. If the email is not confirmed, it will not allow you to log in.
+**Email Confirmation**
 <p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/email%20verification.png">
-</p><br>
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/email%20verification.png" width="50%">
+</p>
 
-### Password reset page:
-If you cannot remember your password, you can click forgot password and will redirect you to the password reset page.
+**Password Reset**
 <p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/forgot%20password.png">
-</p><br>
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/forgot%20password.png" width="50%">
+</p>
 
-### Calendar page:
-By logging in you will be redirected to the calendar page where you can mark the days by your choice.
+**Calendar**
 <p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/main%20page.png">
-</p><br>
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/main%20page.png" width="70%">
+</p>
 
-### Settings page:
-On the settings page, you will see your account details and will be able to change your username and email. Also, you are able to change the password by receiving a password reset email.
+**Settings**
 <p align="center">
-  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/settings%20page.png">
-</p><br><br>
+  <img src="https://github.com/Vlad-Gheorghita/Photos/blob/master/WFH-Calendar/settings%20page.png" width="70%">
+</p>
 
-## :page_with_curl: Features
+---
 
-🔹 User authentication with Firebase Authentication (login and register).<br>
-🔹 Authenticate with Google.<br>
-🔹 Check/Uncheck days.<br>
-<br>
+## 📲 Usage
 
-## :nut_and_bolt: What I used:
-🌐 `Angular`<br>
-🖥️ `TypeScript`<br>
-💻 `Firebase`<br>
-💻 `CSS & HTML`<br>
-<br>
+• Register or log in with email/password or Google  
+• Mark/unmark your WFH days on the calendar  
+• View remaining WFH days for the month  
+• Manage your account in Settings  
+
+---
+
+## 🤝 Contributing
+
+Pull requests are welcome! For major changes, please open an issue first to discuss what you would like to change.
+
+---
+
+## 📄 License
+
+MIT
+
+---
+
+## 🙏 Credits
+
+• 👤 [Vlad Gheorghita](https://github.com/Vlad-Gheorghita) (Author)  
+• 🅰️ [Angular](https://angular.dev/)  
+• 🔥 [Firebase](https://firebase.google.com/)  
+• 🎨 [Angular Material](https://material.angular.io/)  
+• ⭐ [FontAwesome](https://fontawesome.com/)  
+
+---
+
+For questions or feedback, please open an issue or contact [Vlad Gheorghita](https://github.com/Vlad-Gheorghita).
